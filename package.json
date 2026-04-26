@@ -1,0 +1,27 @@
+{
+  "name": "zk-institution-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@semaphore-protocol/contracts": "^4.14.2",
+    "@semaphore-protocol/group": "^4.14.2",
+    "@semaphore-protocol/identity": "^4.14.2",
+    "@semaphore-protocol/proof": "^4.14.2",
+    "circomlib": "^2.0.5",
+    "circomlibjs": "^0.1.7",
+    "csv-parser": "^3.2.0",
+    "csv-writer": "^1.6.0"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "ethers": "^5.0.0",
+    "hardhat": "^2.27.0"
+  }
+}

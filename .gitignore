@@ -1,0 +1,49 @@
+# Claude Code local settings
+.claude/
+
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Build outputs
+frontend/.next/
+frontend/out/
+dist/
+build/
+
+# Hardhat artifacts & cache
+artifacts/
+cache/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+frontend/.env
+frontend/.env.local
+
+# ZK keys (large binary files)
+*.ptau
+*.zkey
+*.wasm
+frontend/public/*.wasm
+frontend/public/*.zkey
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Typechain
+typechain-types/
+
+# Coverage
+coverage/
+coverage.json
