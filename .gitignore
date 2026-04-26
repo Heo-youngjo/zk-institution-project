@@ -17,6 +17,7 @@ cache/
 
 # Environment files
 .env
+backend/.env
 .env.local
 .env.*.local
 frontend/.env

@@ -4,47 +4,52 @@ import WalletPanel from "./WalletPanel";
 export default function Header() {
   return (
     <header
-      style={{ background: "var(--tv-bg-secondary)", borderBottom: "1px solid var(--tv-border)" }}
-      className="sticky top-0 z-50 h-12 flex items-center px-4 gap-6"
+      className="flex items-center h-12 px-4 gap-6 shrink-0"
+      style={{ background: "var(--bg-1)", borderBottom: "1px solid var(--border)" }}
     >
       {/* Logo */}
       <Link href="/" className="flex items-center gap-2 shrink-0">
         <span
-          className="text-xs font-bold tracking-widest uppercase px-2 py-0.5 rounded"
-          style={{ background: "var(--tv-blue)", color: "#fff" }}
+          className="text-xs font-bold tracking-widest px-2 py-0.5 rounded"
+          style={{ background: "var(--blue)", color: "#fff", letterSpacing: "0.12em" }}
         >
           ZK
         </span>
-        <span className="text-sm font-semibold" style={{ color: "var(--tv-text-primary)" }}>
+        <span className="text-sm font-semibold tracking-tight" style={{ color: "var(--text-0)" }}>
           Institution
         </span>
       </Link>
 
-      {/* Divider */}
-      <div className="w-px h-5" style={{ background: "var(--tv-border)" }} />
+      <div className="v-divider h-5" />
 
-      {/* Nav — CSS hover only, no JS event handlers */}
-      <nav className="flex items-center gap-1">
+      {/* Nav */}
+      <nav className="flex items-center">
         <style>{`
-          .tv-nav-link { color: var(--tv-text-muted); }
-          .tv-nav-link:hover { color: var(--tv-text-primary); background: var(--tv-bg-tertiary); }
+          .hdr-link { color: var(--text-1); font-size: 13px; font-weight: 500; padding: 4px 10px; border-radius: 5px; transition: color .15s, background .15s; }
+          .hdr-link:hover { color: var(--text-0); background: var(--bg-3); }
         `}</style>
         {[
-          { href: "/",          label: "Markets"   },
-          { href: "/dashboard", label: "Dashboard" },
-          { href: "/order",     label: "Swap"      },
+          { href: "/",          label: "Markets" },
+          { href: "/dashboard", label: "Portfolio" },
+          { href: "/order",     label: "Trade" },
         ].map(({ href, label }) => (
-          <Link
-            key={href}
-            href={href}
-            className="tv-nav-link px-3 py-1 text-xs font-medium rounded transition-colors"
-          >
-            {label}
-          </Link>
+          <Link key={href} href={href} className="hdr-link">{label}</Link>
         ))}
       </nav>
 
       <div className="flex-1" />
+
+      {/* Right: network badge + wallet */}
+      <div
+        className="flex items-center gap-1.5 px-2.5 py-1 rounded"
+        style={{ background: "var(--bg-3)", border: "1px solid var(--border)" }}
+      >
+        <span
+          className="w-1.5 h-1.5 rounded-full shrink-0"
+          style={{ background: "var(--green)" }}
+        />
+        <span style={{ color: "var(--text-1)", fontSize: 11 }}>Hardhat · 31337</span>
+      </div>
 
       <WalletPanel />
     </header>

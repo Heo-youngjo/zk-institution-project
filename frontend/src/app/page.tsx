@@ -1,31 +1,46 @@
+"use client";
+
+import { useState } from "react";
 import Header from "@/components/Header";
 import DexPriceCards from "@/components/DexPriceCards";
+import PairStatsBar from "@/components/PairStatsBar";
+import OrderBook from "@/components/OrderBook";
 import GeckoChart from "@/components/GeckoChart";
-import ZkLoginCard from "@/components/ZkLoginCard";
-import SessionStatusCard from "@/components/SessionStatusCard";
+import TradePanel from "@/components/TradePanel";
 
 export default function Home() {
+  const [symbol, setSymbol] = useState("BINANCE:ETHUSDT");
+
   return (
-    <div className="flex flex-col h-screen overflow-hidden" style={{ background: "var(--tv-bg-primary)" }}>
+    <div className="flex flex-col h-screen overflow-hidden" style={{ background: "var(--bg-0)" }}>
       <Header />
       <DexPriceCards />
 
-      {/* 메인 레이아웃 */}
       <div className="flex flex-1 min-h-0">
-        {/* 왼쪽: 차트 */}
-        <div className="flex-1 min-w-0" style={{ borderRight: "1px solid var(--tv-border)" }}>
-          <GeckoChart />
+
+        {/* ── Left: PairStats + Chart ── */}
+        <div className="flex-1 flex flex-col min-w-0">
+          <PairStatsBar onSymbolChange={setSymbol} />
+          <div className="flex-1 min-h-0">
+            <GeckoChart symbol={symbol} />
+          </div>
         </div>
 
-        {/* 오른쪽: 패널 (320px 고정) */}
+        {/* ── Right panel: Order Book (top) + Trade Form (bottom) ── */}
         <div
-          className="w-80 shrink-0 flex flex-col overflow-y-auto"
-          style={{ background: "var(--tv-bg-secondary)" }}
+          className="shrink-0 flex flex-col"
+          style={{ width: 300, borderLeft: "1px solid var(--border)" }}
         >
-          <ZkLoginCard />
-          <div style={{ borderTop: "1px solid var(--tv-border)" }} />
-          <SessionStatusCard />
+          {/* Order Book — top 55% */}
+          <div style={{ flex: 55, minHeight: 0, borderBottom: "1px solid var(--border)", overflow: "hidden" }}>
+            <OrderBook />
+          </div>
+          {/* Trade Form — bottom 45% */}
+          <div style={{ flex: 45, minHeight: 0, overflow: "hidden" }}>
+            <TradePanel />
+          </div>
         </div>
+
       </div>
     </div>
   );
